@@ -3,12 +3,16 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Navbars } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Detailsplanet } from "./views/detailsplanets.jsx";
+import { Detailspeople } from "./views/detailspeople.jsx";
+import { Detailsstarships } from "./views/detailsstarships.jsx";
+import { Planets } from "./views/planets.jsx";
+import { Characters } from "./views/characters.jsx";
+import { StarShips } from "./views/starships.jsx";
 
 //create your first component
 const Layout = () => {
@@ -20,16 +24,28 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<Navbars />
 					<Switch>
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/planets/:id">
+							<Detailsplanet />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/people/:id">
+							<Detailspeople />
+						</Route>
+						<Route exact path="/starships/:id">
+							<Detailsstarships />
+						</Route>
+						<Route exact path="/planets/">
+							<Planets />
+						</Route>
+						<Route exact path="/people/">
+							<Characters />
+						</Route>
+						<Route exact path="/starships/">
+							<StarShips />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
